@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs"
+import { readdirSync } from "fs"
 
 const config = {
   output: {
@@ -57,10 +57,7 @@ async function readTextFile(...filePath: string[]): Promise<string> {
   return content.replace(/\n{3,}/g, "\n\n").trim()
 }
 
-async function writeTextFile(
-  content: string,
-  ...filePath: string[]
-): Promise<null> {
+async function writeTextFile(content: string, ...filePath: string[]): Promise<null> {
   const contentPath = `${process.cwd()}/${filePath.join("/")}`
 
   await Bun.write(contentPath, content)
@@ -77,9 +74,7 @@ function removeFrontMatter(text: string): string {
     return text
   }
 
-  const frontMatterEndIndex = lines.findIndex(
-    (line, index) => index > frontMatterStartIndex && line === "---",
-  )
+  const frontMatterEndIndex = lines.findIndex((line, index) => index > frontMatterStartIndex && line === "---")
 
   if (frontMatterEndIndex === -1) {
     return text

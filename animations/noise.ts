@@ -4,13 +4,14 @@ export function createNoiseAnimation(cols: number, rows: number) {
   let prevGrid = new Array(cols * rows).fill(" ")
 
   const getRandomChar = () => {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?"
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?"
     return chars[Math.floor(Math.random() * chars.length)]
   }
 
   const updateNoise = (grid: string[]) => {
     frameCount++
-    
+
     // ランダムにグリッチの強度を変更
     if (Math.random() > 0.9) {
       glitchIntensity = Math.random()
@@ -30,11 +31,11 @@ export function createNoiseAnimation(cols: number, rows: number) {
     // グリッド更新
     for (let row = 0; row < rows; row++) {
       const isGlitchLine = glitchLines.includes(row)
-      
+
       for (let col = 0; col < cols; col++) {
         const index = row * cols + col
         const rand = Math.random()
-        
+
         if (isGlitchLine) {
           // グリッチライン上は激しく変化
           if (rand > 0.2) {
@@ -65,7 +66,7 @@ export function createNoiseAnimation(cols: number, rows: number) {
     if (glitchIntensity > 0.7 && Math.random() > 0.5) {
       const shiftCol = Math.floor(Math.random() * cols)
       const shiftAmount = Math.floor(Math.random() * 10) - 5
-      
+
       for (let row = 0; row < rows; row++) {
         const srcRow = (row + shiftAmount + rows) % rows
         const srcIndex = srcRow * cols + shiftCol

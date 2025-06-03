@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState, memo } from "react"
-import { CanvasView } from "./canvas-view"
+import { createNoiseAnimation } from "@/animations/noise"
 import { createRainAnimation } from "@/animations/rain"
 import { createWaveAnimation } from "@/animations/wave"
-import { createNoiseAnimation } from "@/animations/noise"
 import { Card } from "@/components/ui/card"
+import { memo, useEffect, useRef, useState } from "react"
+import { CanvasView } from "./canvas-view"
 import { FrequencyControl } from "./frequency-control"
 
 const MemoizedCanvasView = memo(CanvasView)

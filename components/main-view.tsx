@@ -1,58 +1,89 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, memo } from "react"
+import { CanvasView } from "./canvas-view"
+import { createRainAnimation } from "@/animations/rain"
+import { createWaveAnimation } from "@/animations/wave"
+import { createNoiseAnimation } from "@/animations/noise"
+import { Card } from "@/components/ui/card"
+import { FrequencyControl } from "./frequency-control"
+
+const MemoizedCanvasView = memo(CanvasView)
 
 export function MainView() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [text] = useState("a")
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    const size = 512
-    canvas.width = size
-    canvas.height = size
-
-    // 文字をシャープにするための設定
-    ctx.imageSmoothingEnabled = false
-
-    // 背景を塗りつぶす
-    ctx.fillStyle = "#ffffff"
-    ctx.fillRect(0, 0, size, size)
-
-    // 32x32のグリッドに文字を配置
+  const createInitialGrid = () => {
     const cols = 32
     const rows = 32
-    const cellWidth = size / cols
-    const cellHeight = size / rows
-
-    // フォント設定
-    ctx.font = `${Math.floor(cellHeight * 1)}px sans-serif`
-    ctx.fillStyle = "#000000"
-    ctx.textAlign = "center"
-    ctx.textBaseline = "middle"
-
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const x = Math.floor(col * cellWidth + cellWidth / 2)
-        const y = Math.floor(row * cellHeight + cellHeight / 2)
-        ctx.fillText(text, x, y)
-      }
+    const grid = new Array(rows * cols)
+    for (let i = 0; i < grid.length; i++) {
+      grid[i] = " "
     }
-  }, [text])
+    return grid
+  }
+
+  const textGridRef = useRef<string[]>(createInitialGrid())
+
+  const [frequency, setFrequency] = useState([95])
+
+  const [channel, setChannel] = useState<string>("noise")
+
+  useEffect(() => {
+    const freq = frequency[0]
+    if (freq >= 88 && freq <= 92) {
+      setChannel("rain")
+    } else if (freq >= 102 && freq <= 106) {
+      setChannel("wave")
+    } else {
+      setChannel("noise")
+    }
+  }, [frequency])
+
+  useEffect(() => {
+    const cols = 32
+    const rows = 32
+
+    let updateFunction: (grid: string[]) => void
+
+    if (channel === "rain") {
+      updateFunction = createRainAnimation(cols, rows)
+    } else if (channel === "wave") {
+      updateFunction = createWaveAnimation(cols, rows)
+    } else {
+      updateFunction = createNoiseAnimation(cols, rows)
+    }
+
+    const interval = setInterval(() => {
+      updateFunction(textGridRef.current)
+    }, 50)
+
+    return () => clearInterval(interval)
+  }, [channel])
+
+  const getCurrentStation = () => {
+    const freq = frequency[0]
+    if (freq >= 88 && freq <= 92) return "RAIN STATION"
+    if (freq >= 102 && freq <= 106) return "WAVE STATION"
+    return "--"
+  }
 
   return (
-    <div className="flex h-screen w-full items-center justify-center p-4">
-      <canvas
-        ref={canvasRef}
-        className="aspect-square w-full max-w-xl border"
-        style={{
-          imageRendering: "pixelated",
-        }}
+    <div className="flex h-svh w-full flex-col items-center justify-center">
+      <div className="w-full max-w-[512px] space-y-2 px-4">
+        <div className="items-top flex w-full justify-end text-center">
+          <div className="font-mono text-muted-foreground text-sm">
+            {getCurrentStation()}
+          </div>
+        </div>
+        <Card className="relative z-10 max-w-xl overflow-hidden">
+          <MemoizedCanvasView state={textGridRef} />
+        </Card>
+      </div>
+      <FrequencyControl
+        value={frequency[0]}
+        onChange={(value) => setFrequency([value])}
+        min={70}
+        max={120}
+        step={0.1}
       />
     </div>
   )

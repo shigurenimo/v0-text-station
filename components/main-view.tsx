@@ -5,7 +5,7 @@ import { createRainAnimation } from "@/animations/rain"
 import { createWaveAnimation } from "@/animations/wave"
 import { Card } from "@/components/ui/card"
 import { memo, useEffect, useRef, useState } from "react"
-import { CanvasView } from "./canvas-view"
+import { CanvasView } from "@/components/canvas-view"
 import { FrequencyControl } from "./frequency-control"
 
 const MemoizedCanvasView = memo(CanvasView)

@@ -1,11 +1,19 @@
 "use client"
 
-import TextEngine from "../text-engine"
+import { useEffect, useState } from "react"
+import { MainView } from "../components/main-view"
 
 export default function Page() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <TextEngine />
-    </main>
-  )
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return null
+  }
+
+  return <MainView />
+
 }

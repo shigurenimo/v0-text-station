@@ -1,11 +1,14 @@
 "use client"
 
+import { createCellularAnimation } from "@/animations/cellular"
+import { createMandalaAnimation } from "@/animations/mandala"
 import { createNoiseAnimation } from "@/animations/noise"
 import { createRainAnimation } from "@/animations/rain"
+import { createSpiralAnimation } from "@/animations/spiral"
 import { createWaveAnimation } from "@/animations/wave"
+import { CanvasView } from "@/components/canvas-view"
 import { Card } from "@/components/ui/card"
 import { memo, useEffect, useRef, useState } from "react"
-import { CanvasView } from "@/components/canvas-view"
 import { FrequencyControl } from "./frequency-control"
 
 const MemoizedCanvasView = memo(CanvasView)
@@ -29,10 +32,16 @@ export function MainView() {
 
   useEffect(() => {
     const freq = frequency[0]
-    if (freq >= 88 && freq <= 92) {
+    if (freq >= 75 && freq <= 78) {
+      setChannel("spiral")
+    } else if (freq >= 82 && freq <= 85) {
+      setChannel("mandala")
+    } else if (freq >= 88 && freq <= 92) {
       setChannel("rain")
     } else if (freq >= 102 && freq <= 106) {
       setChannel("wave")
+    } else if (freq >= 110 && freq <= 113) {
+      setChannel("cellular")
     } else {
       setChannel("noise")
     }
@@ -44,10 +53,16 @@ export function MainView() {
 
     let updateFunction: (grid: string[]) => void
 
-    if (channel === "rain") {
+    if (channel === "spiral") {
+      updateFunction = createSpiralAnimation(cols, rows)
+    } else if (channel === "mandala") {
+      updateFunction = createMandalaAnimation(cols, rows)
+    } else if (channel === "rain") {
       updateFunction = createRainAnimation(cols, rows)
     } else if (channel === "wave") {
       updateFunction = createWaveAnimation(cols, rows)
+    } else if (channel === "cellular") {
+      updateFunction = createCellularAnimation(cols, rows)
     } else {
       updateFunction = createNoiseAnimation(cols, rows)
     }
@@ -61,8 +76,11 @@ export function MainView() {
 
   const getCurrentStation = () => {
     const freq = frequency[0]
+    if (freq >= 75 && freq <= 78) return "SPIRAL ART"
+    if (freq >= 82 && freq <= 85) return "MANDALA"
     if (freq >= 88 && freq <= 92) return "RAIN STATION"
     if (freq >= 102 && freq <= 106) return "WAVE STATION"
+    if (freq >= 110 && freq <= 113) return "LIFE FORMS"
     return "--"
   }
 

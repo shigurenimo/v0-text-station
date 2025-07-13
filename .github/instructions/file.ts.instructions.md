@@ -26,7 +26,7 @@ applyTo: "**/*.{ts,tsx}"
 - **Immutability**: Return new objects instead of modifying existing ones
 - **Type Safety**: Leverage TypeScript's type system for compile-time validation
 
-```ts
+\`\`\`ts
 export class DocumentEntity {
   constructor(private readonly content: string) {}
   
@@ -42,11 +42,11 @@ export class DocumentEntity {
     // Implementation details hidden
   }
 }
-```
+\`\`\`
 
 Use like this:
 
-```ts
+\`\`\`ts
 // Good: Fluent API with method chaining
 const result = document
   .withTitle("New Title")
@@ -57,7 +57,7 @@ const result = document
 document.setTitle("New Title")
 document.setMetadata({ author: "John" })
 const result = document.getMarkdown()
-```
+\`\`\`
 
 ## Service Layer & Facade Patterns
 
@@ -65,7 +65,7 @@ const result = document.getMarkdown()
 - **Unified Interface**: Hide complexity of subsystem interactions behind simple methods
 - **Resource Management**: Handle I/O, validation, and cross-cutting concerns
 
-```ts
+\`\`\`ts
 // Service Layer: Coordinates domain operations
 export class DocumentService {
   constructor(
@@ -83,7 +83,7 @@ export class DocumentService {
     return new Document(validated)
   }
 }
-```
+\`\`\`
 
 ## Refactoring Decision Rules
 
@@ -92,7 +92,7 @@ export class DocumentService {
 - **Use Service Layer**: When coordinating 3+ related operations
 - **Method naming**: `with*()` for transformations, `to*()` for outputs, `get*()` for retrieval
 
-```ts
+\`\`\`ts
 // Good: Logic encapsulated in domain object
 const updatedDocument = document.withProperties(newProperties)
 const markdown = updatedDocument.toMarkdown()
@@ -100,7 +100,7 @@ const markdown = updatedDocument.toMarkdown()
 // Avoid: Manual operations scattered in calling code
 const merged = { ...document.properties, ...newProperties }
 const formatted = formatMarkdown(merged, document.content)
-```
+\`\`\`
 
 ## Naming and Typing
 
@@ -111,10 +111,10 @@ const formatted = formatMarkdown(merged, document.content)
 - No type assertion
 - Do NOT use enum
 
-```ts
+\`\`\`ts
 const user = {} as User // Do NOT use type assertion
 const foo = {} as any // Do NOT use any type
-```
+\`\`\`
 
 ## Functions
 
@@ -124,7 +124,7 @@ const foo = {} as any // Do NOT use any type
 - Isolate side effects
 - Ensure type safety
 
-```ts
+\`\`\`ts
 type Props = {}
 
 /**
@@ -134,7 +134,7 @@ export function FunctionName(props: Props) {
   // props.prop1 // Use props directly
   // const { prop1, prop2 } = props // Do NOT use destructuring
 }
-```
+\`\`\`
 
 ## Control Flow
 
@@ -160,7 +160,7 @@ export function FunctionName(props: Props) {
 - All properties must be readonly
 - Constructor must call Object.freeze(this) for immutability
 
-```ts
+\`\`\`ts
 type Props = {}
 
 /**
@@ -178,7 +178,7 @@ export class ClassName {
     // method implementation
   }
 }
-```
+\`\`\`
 
 ## Comments
 

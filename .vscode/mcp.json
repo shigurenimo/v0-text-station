@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "bunx",
+      "args": ["@playwright/mcp"],
+      "env": {}
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "bunx",
+      "args": ["@upstash/context7-mcp"],
+      "env": {}
+    }
+  }
+}

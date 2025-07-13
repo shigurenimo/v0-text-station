@@ -25,13 +25,13 @@ Keep It Simple, Stupid.
 Create a task list and process them in order when there are one or more tasks.
 Update the task list if new tasks arise during the work.
 
-```
+\`\`\`
 - [x] 機能を修正する
 - [x] テストを実行する
 - [ ] 型のエラーを確認する
 - [ ] Lintのエラーを確認する
 - [ ] リファクタリング
-```
+\`\`\`
 
 Refactor the code after making changes.
 

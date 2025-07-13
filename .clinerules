@@ -13,13 +13,13 @@ Keep It Simple, Stupid.
 ## Tasks
 Create a task list and process them in order when there are one or more tasks.
 Update the task list if new tasks arise during the work.
-```
+\`\`\`
 - [x] 機能を修正する
 - [x] テストを実行する
 - [ ] 型のエラーを確認する
 - [ ] Lintのエラーを確認する
 - [ ] リファクタリング
-```
+\`\`\`
 Refactor the code after making changes.
 ## File rules
 - Use lowercase with hyphens
@@ -54,7 +54,7 @@ Refactor the code after making changes.
 - **Method Chaining**: Enable natural, readable operation sequences
 - **Immutability**: Return new objects instead of modifying existing ones
 - **Type Safety**: Leverage TypeScript's type system for compile-time validation
-```ts
+\`\`\`ts
 export class DocumentEntity {
   constructor(private readonly content: string) {}
   withContent(newContent: string): DocumentEntity {
@@ -67,9 +67,9 @@ export class DocumentEntity {
     // Implementation details hidden
   }
 }
-```
+\`\`\`
 Use like this:
-```ts
+\`\`\`ts
 // Good: Fluent API with method chaining
 const result = document
   .withTitle("New Title")
@@ -79,12 +79,12 @@ const result = document
 document.setTitle("New Title")
 document.setMetadata({ author: "John" })
 const result = document.getMarkdown()
-```
+\`\`\`
 ## Service Layer & Facade Patterns
 - **Centralized Coordination**: Coordinate multiple domain objects and external resources
 - **Unified Interface**: Hide complexity of subsystem interactions behind simple methods
 - **Resource Management**: Handle I/O, validation, and cross-cutting concerns
-```ts
+\`\`\`ts
 // Service Layer: Coordinates domain operations
 export class DocumentService {
   constructor(
@@ -101,20 +101,20 @@ export class DocumentService {
     return new Document(validated)
   }
 }
-```
+\`\`\`
 ## Refactoring Decision Rules
 - **Extract to domain method**: When logic appears in 2+ places
 - **Create fluent method**: When manual object manipulation is required
 - **Use Service Layer**: When coordinating 3+ related operations
 - **Method naming**: `with*()` for transformations, `to*()` for outputs, `get*()` for retrieval
-```ts
+\`\`\`ts
 // Good: Logic encapsulated in domain object
 const updatedDocument = document.withProperties(newProperties)
 const markdown = updatedDocument.toMarkdown()
 // Avoid: Manual operations scattered in calling code
 const merged = { ...document.properties, ...newProperties }
 const formatted = formatMarkdown(merged, document.content)
-```
+\`\`\`
 ## Naming and Typing
 - Use descriptive naming conventions
 - Do NOT abbreviate variable names
@@ -122,17 +122,17 @@ const formatted = formatMarkdown(merged, document.content)
 - Use "type" instead of "interface"
 - No type assertion
 - Do NOT use enum
-```ts
+\`\`\`ts
 const user = {} as User // Do NOT use type assertion
 const foo = {} as any // Do NOT use any type
-```
+\`\`\`
 ## Functions
 - When multiple arguments are needed, use an object named "props" with a defined "Props" type
 - Prefer pure functions
 - Use immutable data structures
 - Isolate side effects
 - Ensure type safety
-```ts
+\`\`\`ts
 type Props = {}
 /**
  * Name
@@ -141,7 +141,7 @@ export function FunctionName(props: Props) {
   // props.prop1 // Use props directly
   // const { prop1, prop2 } = props // Do NOT use destructuring
 }
-```
+\`\`\`
 ## Control Flow
 - Use for-of loops instead of forEach
 - Avoid if-else statements
@@ -160,7 +160,7 @@ export function FunctionName(props: Props) {
 - Do not define return types for getter methods
 - All properties must be readonly
 - Constructor must call Object.freeze(this) for immutability
-```ts
+\`\`\`ts
 type Props = {}
 /**
  * Class Name
@@ -176,7 +176,7 @@ export class ClassName {
     // method implementation
   }
 }
-```
+\`\`\`
 ## Comments
 - Add comments only when function behavior is not easily predictable
 - Do NOT use param or return annotations

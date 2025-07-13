@@ -13,7 +13,13 @@
         "useSortedClasses": "error"
       }
     },
-    "ignore": ["components/ui/**/*", "hooks/use-toast.ts", "route-tree.gen.ts"]
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "!components/ui/**/*",
+      "!hooks/use-toast.ts",
+      "!route-tree.gen.ts"
+    ]
   },
   "javascript": {
     "formatter": {
@@ -21,16 +27,19 @@
     }
   },
   "files": {
-    "ignore": [
-      ".next",
-      "components.json",
-      "components/theme-provider.tsx",
-      "components/ui/**/*",
-      "hooks/use-toast.ts",
-      "lib/utils.ts",
-      "next.config.mjs",
-      "postcss.config.mjs",
-      "tailwind.config.ts"
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.json",
+      "!.next",
+      "!components.json",
+      "!components/theme-provider.tsx",
+      "!components/ui/**/*",
+      "!hooks/use-toast.ts",
+      "!lib/utils.ts",
+      "!next.config.mjs",
+      "!postcss.config.mjs",
+      "!tailwind.config.ts"
     ]
   }
 }

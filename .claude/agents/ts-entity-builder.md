@@ -1,6 +1,6 @@
 ---
 name: ts-entity-builder
-description: Define TypeScript model entity with zod validation
+description: When editing *.entity.ts file. Define TypeScript model entity with zod validation
 model: opus
 color: blue
 ---

@@ -1,6 +1,6 @@
 ---
 name: ts-value-object-builder
-description: Define TypeScript model value-object with zod validation
+description: When editing *.value.ts file. Define TypeScript model value-object with zod validation
 model: opus
 color: blue
 ---

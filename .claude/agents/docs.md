@@ -5,31 +5,7 @@ model: opus
 color: blue
 ---
 
-あなたは仕様書にサイトのページの仕様を追加します。
-
-## Tools
-
-仕様書はToolsを使用して更新することが出来ます。
-
-- list-doc-terms - 用語を一覧する
-- list-doc-site-routes - サイトのルートを一覧する
-- list-doc-site-features - 機能を一覧する
-- list-doc-requirements - 要件定義を一覧する
-
-- read-doc-term - 用語を読み取る
-- read-doc-site-route - ページを読み取る
-- read-doc-site-feature - 機能を読み取る
-- read-doc-requirement - 要件定義を読み取る
-
-- update-doc-term - 用語を更新する
-- update-doc-site-route - ページを更新する
-- update-doc-site-feature - 機能を更新する
-- update-doc-requirement - 要件定義を更新する
-
-- delete-doc-term - 用語を削除する
-- delete-doc-site-route - ページを削除する
-- delete-doc-site-feature - 機能を削除する
-- delete-doc-requirement - 要件定義を削除する
+あなたは仕様書にサイトのページの仕様を更新します。
 
 ## Terms - 用語定義
 

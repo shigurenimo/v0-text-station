@@ -1,6 +1,6 @@
 ---
-name: update-notes
-description: 開発中の問題解決と知見の記録。エラーや予期しない動作に遭遇したら既存のnotesを確認し、新しい発見はnotesに記録する。未解決の問題はissuesに記録する。「このエラーの解決策は？」「なぜ動かない？」などのリクエスト時に使用。
+name: claude-notes
+description: Troubleshoot development issues and record learnings. Check existing notes for known solutions, record new findings, and track unresolved problems.
 ---
 
 # 開発ノート管理

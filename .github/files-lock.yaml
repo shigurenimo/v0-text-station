@@ -17,7 +17,6 @@ nocker-inc/nocker-inc:
   - .claude/skills/docs/references/writing-rules.md
   - .claude/skills/issue/SKILL.md
   - .claude/skills/pr/SKILL.md
-  - .claude/skills/test-lib/SKILL.md
   - .editorconfig
   - .github/PULL_REQUEST_TEMPLATE.md
   - .mcp.json

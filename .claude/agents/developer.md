@@ -2,8 +2,7 @@
 name: developer
 description: Ad-hoc development with plan-approve-implement workflow
 permissionMode: bypassPermissions
-model: opus
-memory: project
+model: claude-opus-4-6
 metadata:
   author: shigurenimo
 ---

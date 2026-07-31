@@ -73,3 +73,18 @@ nocker-inc/nocker-inc#shigurenimo-v0:
   - CLAUDE.md
   - Makefile
   - biome.json
+nocker-sh/nocker-inc#shigurenimo-v0:
+  - .claude/agents/debugger.md
+  - .claude/agents/developer.md
+  - .claude/agents/hacker.md
+  - .claude/rules/md.md
+  - .claude/rules/ts.md
+  - .claude/settings.json
+  - .editorconfig
+  - .github/PULL_REQUEST_TEMPLATE.md
+  - .mcp.json
+  - .vscode/mcp.json
+  - .vscode/settings.json
+  - CLAUDE.md
+  - Makefile
+  - biome.json

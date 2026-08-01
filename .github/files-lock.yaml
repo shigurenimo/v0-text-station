@@ -74,9 +74,6 @@ nocker-inc/nocker-inc#shigurenimo-v0:
   - Makefile
   - biome.json
 nocker-sh/nocker-inc#shigurenimo-v0:
-  - .claude/agents/debugger.md
-  - .claude/agents/developer.md
-  - .claude/agents/hacker.md
   - .claude/rules/md.md
   - .claude/rules/ts.md
   - .claude/settings.json

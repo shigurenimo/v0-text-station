@@ -78,8 +78,6 @@ nocker-sh/nocker-inc#shigurenimo-v0:
   - .claude/settings.json
   - .editorconfig
   - .github/PULL_REQUEST_TEMPLATE.md
-  - .mcp.json
-  - .vscode/mcp.json
   - .vscode/settings.json
   - CLAUDE.md
   - Makefile
